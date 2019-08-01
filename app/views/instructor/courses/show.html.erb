@@ -1,0 +1,37 @@
+<br />
+<div class="booyah-box col-10 offset-1">
+  <h1 class="text-center"><%= current_course.title %></h1>
+  <h1 class="text-center"><%= current_course.image %></h1>
+  <br />
+  <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning float-right btn-sm' %>
+    <br class="clr" />
+
+  <div class="text-center">
+    <br class="clr" />
+    <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'float-right btn btn-primary btn-sm' %>
+    
+      <br class="clr" />
+  </div>
+  <br class="clr" />
+
+  <ul>
+    <% current_course.sections.each do |section| %>
+      <li>
+        <%= section.title %>
+        <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-primary btn-md' %>
+        <br class="clr" />
+        <ul>
+          <% section.lessons.each do |lesson| %>
+            <li>
+              <b><%= lesson.title %></b>
+              -
+              <%= lesson.subtitle %>
+            </li>
+          <% end %>
+        </ul>
+        <br class="clr" />
+      </li>
+    <% end %>
+  </ul>
+
+</div>
